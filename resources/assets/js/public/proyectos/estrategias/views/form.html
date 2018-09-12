@@ -1,0 +1,54 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Estrategia</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.estrategias2" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Objetivo</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.objetivo">
+                        <ui-select-match placeholder="Seleccione objetivo asociado...">
+                           {{$select.selected.objetivo}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.objetivos">
+                            <span ng-bind="opcion.objetivo "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Estrategia</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="objetivo" placeholder="Ingrese Estrategia ..." ng-model="vm.data.estrategia">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Estado</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.activo">
+                        <ui-select-match placeholder="Seleccione estado...">
+                           {{$select.selected.nombre}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.opcionesEstado">
+                            <span ng-bind="opcion.nombre "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Estrategia
+        </button>
+    </div>
+</div>

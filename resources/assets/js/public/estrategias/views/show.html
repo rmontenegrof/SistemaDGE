@@ -1,0 +1,43 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Estrategia</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.estrategias.asociar({id: vm.data.id_estrategia})" class="btn btn-default">
+                    <i class="fa fa-link" aria-hidden="true"></i> Asociar Iniciativa
+                </a>
+                <a ui-sref="app.objetivos" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Estrategia</td>
+                <td width="20">:</td>
+                <td class="tdInfo">{{vm.data.estrategia}}</td>
+            </tr>
+        <table class="table table-hover">
+            <thead>
+                <th>Iniciativas Asociadas</th>
+                <th width="40">Ver</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="iniciativa in vm.iniciativas">
+                    <td>{{ iniciativa.iniciativa.descripcion_corta }}</td>
+                    <td><a ui-sref="app.iniciativas.show({id: iniciativa.iniciativa.id_iniciativa})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                    <i class="fa fa-eye"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if='vm.reload' class='text-center'>
+            <i class="fa fa-2x fa-spinner fa-spin"></i>
+        </div>
+
+        <div ng-hide="vm.reload" ng-if="vm.estrategias | isEmpty" class='text-center'>
+            Sin resultados
+        </div>
+    </div>
+</div>

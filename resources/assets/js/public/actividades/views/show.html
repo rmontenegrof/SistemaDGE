@@ -1,0 +1,63 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Actividad</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.actividades" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body"> 
+            <table class='table mantainer'>
+                <tbody>
+                    <tr>
+                        <td width="10%">Actividad</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{vm.data.actividad}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Hito</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.hito.nombre)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Iniciativa</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.hito.iniciativa.descripcion_corta)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Unidad</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.unidad.unidad)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Inicio</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.mes_inicio==1)?"Primer":"Segundo"}} Semestre de {{vm.data.anho_inicio}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Término</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.mes_termino==1)?"Primer":"Segundo"}} Semestre de {{vm.data.anho_termino}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Detalle Gasto</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.detalle_gasto)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Recursos ($)</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.recursos)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Origen Recurso</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.origen_recurso)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>

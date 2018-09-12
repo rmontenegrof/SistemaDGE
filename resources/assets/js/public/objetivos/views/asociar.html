@@ -1,0 +1,33 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Estrategia a Objetivo</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.objetivos.show({id: vm.id})" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al objetivo
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Estrategias</td>
+                <td width="20"  class="point">:</td>
+                <td class="tdInfo"> 
+                    <ui-select multiple ng-model="vm.data.estrategias">
+                      <ui-select-match placeholder="...">
+                        {{$item.estrategia}}
+                      </ui-select-match>
+                      <ui-select-choices repeat="estrategia.id_estrategia as estrategia in (vm.estrategias | filter: $select.search) track by $index">
+                        <span ng-bind="estrategia.estrategia"></span>
+                      </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Estrategias
+        </button>
+    </div>
+</div>

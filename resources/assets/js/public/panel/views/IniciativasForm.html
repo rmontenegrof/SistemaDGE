@@ -1,0 +1,103 @@
+<div class="panel panel-transparent">
+	<div class="row" ng-if="vm.showPanel">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa-fw fa fa-"></i>
+				<b>{{vm.titulo_panel}}</b>
+			</h1>
+		</div>
+	</div>
+	<div class="row" ng-if="vm.showPanel">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa-fw fa fa-"></i>
+				<b> Foco: {{vm.data.foco.descripcion_foco}} </b>
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa-fw fa fa-"></i>
+				Panel de Control - Iniciativa
+			</h1>
+		</div>
+	</div>
+	<div class="panel-body">
+	    <div class="row">
+	        <div class="col-sm-6">
+	            <ui-select ng-model="vm.data.unidad" on-select="vm.focoType()">
+                    <ui-select-match placeholder="Seleccione unidad...">
+                       {{$select.selected.unidad}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="opcion in vm.unidades">
+                        <span ng-bind="opcion.unidad "></span>
+                    </ui-select-choices>
+                </ui-select>
+	        </div>
+	        <div class="col-sm-3">
+	            <ui-select ng-model="vm.data.foco">
+                    <ui-select-match placeholder="Seleccione foco estrategico...">
+                       {{$select.selected.descripcion_foco}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="opcion in vm.focos">
+                        <span ng-bind="opcion.descripcion_foco "></span>
+                    </ui-select-choices>
+                </ui-select>
+	        </div>
+    		<div class="col-sm-3">
+	            <a ng-click="vm.formatear()" class="boton">Mostrar panel</a>
+	        </div>
+	    </div>
+	</div>
+
+	<div ng-if="vm.showPanel">
+		<div class="row">
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark">
+					<i class="fa-fw fa fa-"></i>
+					Consulta Iniciativas 
+				</h1>
+			</div>
+		</div>
+		<uib-accordion close-others="oneAtATime">
+
+			<div uib-accordion-group class="panel-default" heading="{{group.objetivo}}" ng-repeat="group in vm.data.unidad.objetivos" ng-if="group.mostrar">
+				<div uib-accordion-group class="panel" heading="{{estrategia.estrategia.estrategia}}" ng-repeat="estrategia in group.estrategias">
+					<table class="table">
+						<thead>
+							<th width="30%">Iniciativa</th>
+							<th width="50%">Avance</th>
+							<th width="20%"></th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="iniciativa in estrategia.estrategia.iniciativas">
+								<td>
+									{{iniciativa.iniciativa.descripcion_corta}}
+								</td>
+								<td>
+									<div class="progress">
+									    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{iniciativa.iniciativa.avance}}" aria-valuemin="0" aria-valuemax="100" style="width:{{iniciativa.iniciativa.avance}}%">
+									      {{iniciativa.iniciativa.avance}}% Completo
+									    </div>
+									</div>
+								</td>
+								<td>
+									<td>
+										<a ui-sref="app.iniciativas.edit_update({id: iniciativa.iniciativa.id_iniciativa})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                                		<i class="fa fa-pencil-square-o"></i></a>
+                            		</td>
+									<td>
+                                        <a ng-click="vm.modalAgregarArchivo(iniciativa.iniciativa.id_iniciativa, $index)" class='btn btn-default'><i class='fa fa-paperclip'></i></a>
+                                    </td>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>	    	
+			</div>
+	    </uib-accordion>
+	</div>
+
+</ui-view>

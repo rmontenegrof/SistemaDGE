@@ -1,0 +1,77 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Hito</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.hitos2" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Proyecto</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.proyecto">
+                        <ui-select-match placeholder="Seleccione proyecto asociado...">
+                           {{$select.selected.iniciativa}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.proyectos">
+                            <span ng-bind="opcion.iniciativa "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Responsable</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="responsable" placeholder="Ingrese responsable ..." ng-model="vm.data.responsable">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Hito</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="hito" placeholder="Ingrese Hito ..." ng-model="vm.data.hito">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Origen</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.origen">
+                        <ui-select-match placeholder="Seleccione origen asociado...">
+                           {{$select.selected.origen}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.origenes">
+                            <span ng-bind="opcion.origen "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Monto total</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="monto_total" placeholder="Ingrese Monto total en pesos ..." ng-model="vm.data.monto_total">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Observaciones</td>
+                <td width="20" class="point">:</td>
+                <td colspan="4" class="tdInfo"><div class="form-group field-formacciones-descripcion required">
+
+                <textarea id="formacciones-descripcion" class="form-control" rows="9" cols="1" style="resize:none" placeholder="Ingrese observaciones del hito ..." ng-model="vm.data.observacion"></textarea>
+                <div class="help-block"></div>
+                </div></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Hito
+        </button>
+    </div>
+</div>

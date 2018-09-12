@@ -1,0 +1,63 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Unidad</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.unidades" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+    <form>
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Unidad</td>
+                <td width="20">:</td>
+                <td class="tdInfo"><input type="text" class="form-control" name="unidad" placeholder="Ingrese unidad académica ..." ng-model="vm.data.unidad"></td>
+                <td class="tdLabel">Estado</td>
+                <td width="20">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.estado">
+                        <ui-select-match placeholder="Seleccione estado...">
+                           {{$select.selected.nombre}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.opcionesEstado">
+                            <span ng-bind="opcion.nombre "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+              <td  class="tdLabel">Misión</td>
+              <td width="20">:</td>
+              <td class="tdInfo"><textarea class="form-control" style="resize:none" placeholder="Ingrese la misión de la unidad ..." ng-model="vm.data.mision"></textarea></td>
+              <td class="tdLabel">Visión</td>
+              <td width="20">:</td>
+              <td class="tdInfo"> <textarea class="form-control" style="resize:none" placeholder="Ingrese la visión de la unidad ..." ng-model="vm.data.vision"></textarea></td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Id Grupo</td>
+                <td width="20">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.id_grupo">
+                        <ui-select-match placeholder="Seleccione grupo...">
+                           {{$select.selected.desc_grupo}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id_grupo as opcion in vm.grupos">
+                            <span ng-bind="opcion.desc_grupo "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+                <td class="tdLabel">Cod. Centro costo</td>
+                <td width="20">:</td>
+                <td class="tdInfo"><input type="text" class="form-control" name="unidad" placeholder="Ingrese código centro de costo ..." ng-model="vm.data.CodCC"></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Unidad
+        </button>
+    </form>
+  </div>
+</div>

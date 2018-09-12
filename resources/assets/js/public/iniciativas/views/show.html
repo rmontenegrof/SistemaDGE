@@ -1,0 +1,63 @@
+<ui-view>
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Iniciativa</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.iniciativas.show.archivos" class="btn btn-default">
+                    <i class="fa fa-file" aria-hidden="true"></i> Archivos
+                </a>
+                <a ui-sref="app.iniciativas" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body"> 
+            <table class='table mantainer'>
+                <tbody>
+                    <tr>
+                        <td width="10%">Iniciativa</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{vm.data.descripcion_corta}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Activa</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.activo)?"Si":"No"}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Avance</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.avance)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Inicio</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.semestre_inicio==1)?"Primer":"Segundo"}} Semestre de {{vm.data.anho_inicio}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Término</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.semestre_fin==1)?"Primer":"Segundo"}} Semestre de {{vm.data.anho_fin}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Responsable</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.responsable)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Presupuesto</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.presupuesto)}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">Unidad de Apoyo</td>
+                        <td width="5%">:</td>
+                        <td width="85%">{{(vm.data.unidad.unidad_apoyo)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+</ui-view>

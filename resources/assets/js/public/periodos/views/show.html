@@ -1,0 +1,39 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>Administración de periodos</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a title="Editar" ui-sref="app.periodos.edit({id: vm.periodo.id_periodo})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                </a>
+                <a ng-click="vm.destroy(periodo.id_periodo, $index)" class='btn btn-default'><i class='fa fa-trash'></i> Eliminar</a>
+                <a title="Ir al buscador" ui-sref="app.periodos">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Volver
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <thead>
+                <tr>
+                    <td  class="labelInfoUser">periodo</td>
+                    <td class="informacion"></td>
+                    <td class="informacion">{{ vm.periodo.descripcion }}</td>
+                </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td width="86"  class="labelInfoUser">Estado</td>
+                <td width="10" class="informacion"></td>
+                <td width="222" class="informacion">
+                {{ (vm.periodo.activo == 1)? 'Activo':'Inactivo'}}
+                </td>
+            </tr>
+ </table>
+  <br />
+<br />
+
+<div class="info2">Actualmente, para este periodo las siguientes unidades tienen planes definidos:</div></BR></BR>

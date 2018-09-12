@@ -1,0 +1,73 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Usuario</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.users" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form>   
+            <table class='table mantainer'>
+                <tr>
+                    <td class="tdLabel">Nombres</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo">{{vm.data.nombres}}</td>
+                    <td class="tdLabel">Tipo</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo">
+                        <ui-select ng-model="vm.data.tipo">
+                            <ui-select-match placeholder="Seleccione tipo...">
+                               {{$select.selected.nombre}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="opcion.id as opcion in vm.opcionesTipo">
+                                <span ng-bind="opcion.nombre "></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td  class="tdLabel">Apellido Paterno</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="text" name="apellido_paterno" placeholder="Ingrese unidad académica ..." ng-model="vm.data.apellido_paterno"></td>
+                    <td class="tdLabel">Usuario</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="text" name="usuario" placeholder="Ingrese usuario" ng-model="vm.data.usuario"></td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Apellido Materno</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="text" name="apellido_materno" placeholder="Ingrese apellido ..." ng-model="vm.data.apellido_materno"></td>
+                    <td class="tdLabel">Cargo</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="text" name="cargo" placeholder="Ingrese cargo ..." ng-model="vm.data.cargo"></td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">IP</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="text" name="ip" placeholder="Ingrese ip ..." ng-model="vm.data.ip"></td>
+                    <td class="tdLabel">Unidades</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"> 
+                        <ui-select multiple ng-model="vm.data.unidades">
+                          <ui-select-match placeholder="Selecciona unidades...">
+                            {{$item.unidad}}
+                          </ui-select-match>
+                          <ui-select-choices repeat="unidad.id_unidad_estrategica as unidad in (vm.unidades | filter: $select.search) track by $index">
+                            <span ng-bind="unidad.unidad"></span>
+                          </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Mail</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="email" name="mail" placeholder="Ingrese correo electrónico ..." ng-model="vm.data.mail"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

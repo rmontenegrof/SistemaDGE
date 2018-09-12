@@ -1,0 +1,89 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Actividad</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.actividades2" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Hito</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.hito">
+                        <ui-select-match placeholder="Seleccione hito asociado...">
+                           {{$select.selected.hito}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.hitos">
+                            <span ng-bind="opcion.hito "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Actividad</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="actividad" placeholder="Ingrese Actividad ..." ng-model="vm.data.actividad">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Medio Verificación</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="medio_verificacion" placeholder="Ingrese Medio de Verificación de actividad ..." ng-model="vm.data.medio_verificacion">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Unidad Apoyo</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.unidad_apoyo">
+                        <ui-select-match placeholder="Seleccione unidad de apoyo asociada...">
+                           {{$select.selected.unidad_apoyo}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id_unidad_apoyo as opcion in vm.unidades">
+                            <span ng-bind="opcion.unidad_apoyo "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Fecha Inicio</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="fecha_inicio" placeholder="Ingrese Fecha de Inicio de actividad ..." ng-model="vm.data.fecha_inicio">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Fecha Fin</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="fecha_fin" placeholder="Ingrese Fecha de Fin de actividad ..." ng-model="vm.data.fecha_fin">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Recursos</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="recursos" placeholder="Ingrese recursos asociados a la actividad ..." ng-model="vm.data.recursos">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Especificación de gasto</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="detalle_gasto" placeholder="Ingrese una breve descripcion del gasto asociado a la actividad ..." ng-model="vm.data.detalle_gasto">
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Actividad
+        </button>
+    </div>
+</div>

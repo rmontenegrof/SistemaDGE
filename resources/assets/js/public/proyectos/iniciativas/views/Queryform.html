@@ -1,0 +1,61 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Proyecto/Iniciativa</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.proyectos" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Estrategia</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.estrategia">
+                        <ui-select-match placeholder="Seleccione estrategia asociada...">
+                           {{$select.selected.estrategia}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.estrategias">
+                            <span ng-bind="opcion.estrategia "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Unidad Responsable</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <ui-select ng-model="vm.data.unidad_responsable">
+                        <ui-select-match placeholder="Seleccione unidad asociada...">
+                           {{$select.selected.unidad}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id_unidad_estrategica as opcion in vm.unidades">
+                            <span ng-bind="opcion.unidad "></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">Iniciativa</td>
+                <td width="20" class="point">:</td>
+                <td class="tdInfo">
+                    <input type="text" class="form-control" name="iniciativa" placeholder="Ingrese Iniciativa ..." ng-model="vm.data.iniciativa">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdLabel">% Avance</td>
+                <td width="20" class="point">:</td>
+                 <td class="tdInfo">
+                    <input type="text" class="form-control" name="avance" placeholder="Ingrese avance (valor entre 0 y 100)" ng-model="vm.data.avance">
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Proyecto/Iniciativa
+        </button>
+    </div>
+</div>

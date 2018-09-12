@@ -1,0 +1,70 @@
+<ui-view>
+    <div class='row'>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class='pull-right'>
+                <a ui-sref="app.iniciativas.show" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir a la Iniciativa
+                </a>
+                <button class="btn btn-primary" ng-click="vm.modalCrearArchivo()">Agregar Archivo</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class='row'>
+        <article class="col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget jarviswidget-color-bluegob" id="archivo-cargas-table">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                    <h2>Listado Documentos</h2>
+                </header>
+
+                <div>
+                    <div class="widget-body no-padding">
+                        <table class='table table-bordered'>
+                            <thead>
+                                <tr>
+                                    <th>Nombre Archivo</th>
+                                    <th>Fecha</th>
+                                    <th colspan="2" class='action-column'>Acciones</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <th width="40">Descargar</th>
+                                    <th width="40">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="archivo in vm.documentos">
+                                    <td>{{ archivo.real_name }}</td>
+                                    <td>{{ archivo.fecha_subida }}</td>
+                                    <td>
+                                        <a ng-if="(archivo.name_file)" ng-click="vm.descargar(archivo.name_file, archivo.path)" class="btn btn-info btn-xs"><i class="fa fa-download"></i></a>
+                                    </td>
+                                    <td>
+                                        <a ng-click="vm.destroy(archivo.id_file, $index)" class='btn btn-default'><i class='fa fa-trash'></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div ng-if='vm.reload' class='text-center'>
+                            <i class="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+
+                        <div ng-hide="vm.reload" ng-if="vm.documentos | isEmpty" class='text-center'>
+                            Sin resultados
+                        </div>
+
+                        <div ng-hide="vm.reload" ng-if="! (vm.documentos | isEmpty)" class='text-center'>
+                            <ul uib-pagination items-per-page="vm.itemsPerPage" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</ui-view>

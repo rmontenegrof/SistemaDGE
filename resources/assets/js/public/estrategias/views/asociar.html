@@ -1,0 +1,46 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Iniciativa a Estrategia "{{vm.data.estrategia}}"</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.estrategias.show({id: vm.id})" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir a la estrategia
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Iniciativas</td>
+                <td width="20"  class="point">:</td>
+                <td class="tdInfo"> 
+                    <ui-select multiple ng-model="vm.data.iniciativas">
+                      <ui-select-match placeholder="...">
+                        {{$item.descripcion_corta}}
+                      </ui-select-match>
+                      <ui-select-choices repeat="iniciativa.id_iniciativa as iniciativa in (vm.iniciativas | filter: $select.search) track by $index">
+                        <span ng-bind="iniciativa.descripcion_corta"></span>
+                      </ui-select-choices>
+                    </ui-select>
+                </td>
+
+                <!--<td class="tdLabel">Unidades</td>
+                <td width="20"  class="point">:</td>
+                <td class="tdInfo"> 
+                    <ui-select multiple ng-model="vm.data.unidades">
+                      <ui-select-match placeholder="...">
+                        {{$item.unidad}}
+                      </ui-select-match>
+                      <ui-select-choices repeat="unidad.id_unidad_estrategica as unidad in (vm.unidades | filter: $select.search) track by $index">
+                        <span ng-bind="unidad.unidad"></span>
+                      </ui-select-choices>
+                    </ui-select>
+                </td>-->
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Iniciativas a Estrategia
+        </button>
+    </div>
+</div>

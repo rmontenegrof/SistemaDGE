@@ -1,0 +1,58 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>Administración de unidades</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a title="Editar" ui-sref="app.unidades.edit({id: vm.unidad.id_unidad_estrategica})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                </a>
+                <a ng-click="vm.destroy(unidad.id_unidad_estrategica, $index)" class='btn btn-default'><i class='fa fa-trash'></i> Eliminar</a>
+                <a title="Ir al buscador" ui-sref="app.unidades">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Volver
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <thead>
+                <tr>
+                    <td  class="labelInfoUser">Unidad</td>
+                    <td class="informacion"></td>
+                    <td class="informacion">{{ vm.unidad.unidad }}</td>
+                </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td width="86"  class="labelInfoUser">Estado</td>
+                <td width="10" class="informacion"></td>
+                <td width="222" class="informacion">
+                {{ (vm.unidad.estado == 1)? 'Activo':'Inactivo'}}
+                </td>
+            </tr>
+
+
+            <tr>
+                <td width="86"  class="labelInfoUser">Centro de Costo</td>
+                <td width="10" class="informacion"></td>
+                    <td class="informacion">{{ vm.unidad.CodCC }}</td>
+            </tr>
+
+
+
+            <tr>
+                <td>Misión</td>
+                <td></td>
+                <td>{{vm.unidad.mision}}</td>
+        <tr>
+              <td>Visión</td>
+              <td></td>
+              <td class="informacion">{{ vm.unidad.vision }}</td>
+            </tr>
+ </table>
+  <br />
+<br />
+
+<div class="info2">Actualmente la unidad tiene asociados los siguientes objetivos :</div></BR></BR>

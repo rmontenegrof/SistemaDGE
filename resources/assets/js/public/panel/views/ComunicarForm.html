@@ -1,0 +1,32 @@
+<div class="col-lg-10">
+    <div class="panel panel-white" style="margin-top:40px">
+		<div class="panel-heading">
+			<h4>Redactar comunicado</h4>
+		</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label>Destinatarios</label>
+                <ui-select multiple ng-model="vm.data.destinatarios">
+                    <ui-select-match placeholder="Seleccione destinatarios...">
+                        {{$item.unidad}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="unidad.id_unidad_estrategica as unidad in (vm.unidades | filter: $select.search) track by $index">
+                        <span ng-bind="unidad.unidad"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="form-group">
+                <label>Asunto</label>
+                <input type="text" class="form-control" name="asunto" ng-model="vm.data.asunto">
+            </div>
+            <div class="form-group">
+                <label>Mensaje</label>
+                <textarea class="form-control" rows="16" style="resize:none" placeholder="Ingrese mensaje del comunicado" ng-model="vm.data.mensaje"></textarea>
+                <br>
+                <button ng-click="vm.submitForm()" class="btn btn-primary">
+                    <i ng-class="{'fa-lock': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }" class="fa fa-btn "></i> Enviar Comunicado
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

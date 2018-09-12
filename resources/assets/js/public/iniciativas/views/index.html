@@ -1,0 +1,68 @@
+<ui-view>
+    <div class="wrap-content container">
+            <div class="panel panel-transparent">
+                <div class="panel-heading">
+                    <h4>Listado de Iniciativa</h4>
+                    <div class="panel-tools">
+                        <div class="btn-group">
+                            <a ui-sref="app.iniciativas.create" class="btn btn-default"><i class="fa fa-plus" ui-sref-opts="{inherit: false}"></i>Agregar Iniciativa</a>
+                            <!--<a class="btn btn-default"><i class="fa fa-print"></i>Imprimir</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Iniciativa</th>
+                                <th>Estrategia</th>
+                                <th>Unidad</th>
+                                <th colspan="3">Acciones</th>
+                            </tr>
+                           <tr>
+                                <td class="hasinput" style="">
+                                    <input ng-model="vm.search.iniciativa" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="Iniciativa" />
+                                </td>
+                                <td class="hasinput" style="">
+                                    <input ng-model="vm.search.estrategia" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="Estrategia" />
+                                </td>
+                                <td class="hasinput" style="">
+                                    <input ng-model="vm.search.unidad" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="Unidad" />
+                                </td>
+                                <th width="40">Ver</th>
+                                <th width="40">Editar</th>
+                                <th width="40">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="iniciativa in vm.iniciativas">
+                                <td>{{ iniciativa.descripcion_corta }}</td>
+                                <td> <span ng-repeat="estrategia in iniciativa.estrategias">{{estrategia.estrategia.estrategia}}</span></td>
+                                <td>{{ iniciativa.unidad.unidad_apoyo }}</td>
+                                <td><a ui-sref="app.iniciativas.show({id: iniciativa.id_iniciativa})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                                <i class="fa fa-eye"></i>
+                                </a></td>
+                                <td><a ui-sref="app.iniciativas.edit({id: iniciativa.id_iniciativa})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                                <i class="fa fa-pencil-square-o"></i>
+                                </a></td>
+                                <td>
+                                    <a ng-click="vm.destroy(iniciativa.id_iniciativa, $index)" class='btn btn-default'><i class='fa fa-trash'></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if='vm.reload' class='text-center'>
+                        <i class="fa fa-2x fa-spinner fa-spin"></i>
+                    </div>
+
+                    <div ng-hide="vm.reload" ng-if="vm.iniciativas | isEmpty" class='text-center'>
+                        Sin resultados
+                    </div>
+
+                    <div ng-hide="vm.reload" ng-if="! (vm.iniciativas | isEmpty)" class='text-center'>
+                        <ul uib-pagination items-per-page="vm.itemsPerPage" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></ul>
+                    </div>
+                </div>
+            </div>
+    </div>
+</ui-view>

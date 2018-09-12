@@ -1,0 +1,24 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Unidad de apoyo</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.unidadesapoyo" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Unidad de Apoyo</td>
+                <td width="20">:</td>
+                <td class="tdInfo"><input type="text" class="form-control" name="unidad_apoyo" placeholder="Ingrese unidad de apoyo ..." ng-model="vm.data.unidad_apoyo"></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Unidad de apoyo
+        </button>
+    </div>
+</div>

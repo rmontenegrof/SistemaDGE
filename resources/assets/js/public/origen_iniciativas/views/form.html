@@ -1,0 +1,24 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Origen Iniciativa</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.origen" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <tr>
+                <td class="tdLabel">Origen Iniciativa</td>
+                <td width="20">:</td>
+                <td class="tdInfo"><input type="text" class="form-control" name="origen" placeholder="Ingrese origen ..." ng-model="vm.data.origen"></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="vm.submitForm()">
+            {{vm.action}} Origen
+        </button>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>Administración de Focos Estratégicos</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a title="Editar" ui-sref="app.focos.edit({id: vm.foco.id_foco_estrategico})" class="btn btn-default" ui-sref-opts="{inherit: false}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                </a>
+                <a ng-click="vm.destroy(foco.id_foco_estrategico, $index)" class='btn btn-default'><i class='fa fa-trash'></i> Eliminar</a>
+                <a title="Ir al buscador" ui-sref="app.focos">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Volver
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class='table mantainer'>
+            <thead>
+                <tr>
+                    <td  class="labelInfoUser">Foco</td>
+                    <td class="informacion"></td>
+                    <td class="informacion">{{ vm.foco.descripcion_foco }}</td>
+                </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td width="86"  class="labelInfoUser">Estado</td>
+                <td width="10" class="informacion"></td>
+                <td width="222" class="informacion">
+                {{ (vm.foco.activo == 1)? 'Activo':'Inactivo'}}
+                </td>
+            </tr>
+ </table>
+  <br />
+<br />

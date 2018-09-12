@@ -1,0 +1,107 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4>{{vm.action}} Actividad</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.actividades" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Ir al buscador
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form>   
+            <table class='table mantainer'>
+                <tr>
+                    <td class="tdLabel">Actividad</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="descripcion_corta" placeholder="Ingrese nombre actividad ..." ng-model="vm.data.actividad"></td>
+                    <!--<td  class="tdLabel">Responsable</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="responsable" placeholder="Ingrese responsable a cargo ..." ng-model="vm.data.responsable"></td>-->
+                </tr>
+                <tr>
+                    <td class="tdLabel">Unidad</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo">
+                        <ui-select ng-model="vm.data.unidad_apoyo">
+                            <ui-select-match placeholder="Seleccione Unidad...">
+                               {{$select.selected.unidad}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="opcion.id_unidad_estrategica as opcion in (vm.unidades | filter: $select.search) track by $index">
+                                <span ng-bind="opcion.unidad "></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                    <td class="tdLabel">Hito</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo">
+                        <ui-select ng-model="vm.data.hito">
+                            <ui-select-match placeholder="Seleccione hito...">
+                               {{$select.selected.nombre}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="opcion.id_hito as opcion in (vm.hitos | filter: $select.search) track by $index"">
+                                <span ng-bind="opcion.nombre "></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Mes Inicio</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo">
+                        <ui-select ng-model="vm.data.mes_inicio">
+                            <ui-select-match placeholder="Seleccione mes inicio...">
+                               {{$select.selected.nombre}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="opcion.id as opcion in vm.meses">
+                                <span ng-bind="opcion.nombre "></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                    <td class="tdLabel">Mes Termino</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo">
+                        <ui-select ng-model="vm.data.mes_termino">
+                            <ui-select-match placeholder="Seleccione mes termino...">
+                               {{$select.selected.nombre}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="opcion.id as opcion in vm.meses">
+                                <span ng-bind="opcion.nombre "></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Año Inicio</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="anho_inicio" placeholder="Ingrese año inicio ..." ng-model="vm.data.anho_inicio"></td>
+                    <td class="tdLabel">Año Término</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="anho_fin" placeholder="Ingrese año inicio ..." ng-model="vm.data.anho_termino"></td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Recursos ($)</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="recursos" placeholder="Ingrese monto monetario del periodo..." ng-model="vm.data.recursos"></td>
+                    <td class="tdLabel">Origen Recurso</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="origen_recurso" placeholder="Indique origen del recurso..." ng-model="vm.data.origen_recurso"></td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Detalle del Gasto</td>
+                    <td width="20" class="point">:</td>
+                    <td colspan="4" class="tdInfo"><div class="form-group field-formacciones-descripcion required">
+
+                    <textarea id="formacciones-descripcion" class="form-control" rows="9" cols="1" style="resize:none" placeholder="Ingrese descripción de la acción ..." ng-model="vm.data.detalle_gasto"></textarea>
+
+                    <div class="help-block"></div>
+                    </div></td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" ng-click="vm.submitForm()">
+                {{vm.action}} Actividad
+            </button>
+        </form>
+    </div>
+</div>

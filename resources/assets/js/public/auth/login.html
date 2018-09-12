@@ -1,0 +1,54 @@
+<ui-view>
+    <div class="contentInic" style="height:100vh;">
+
+
+    <div class="box-login">
+        <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-2">
+
+                <div class="fieldset">
+                            <p class='info2'>Ingrese usuario y contraseña:</p>
+                            <form role="form" method="POST" novalidate class="form-horizontal form-login">
+                                    <div class="form-group field-loginform-username">
+                                        <input ng-model="vm.user.usuario" id="usuario" name="usuario" class="form-control" aria-required="true" aria-invalid="false">
+                                        <em ng-if="vm.hasError('usuario')" class="help-block">
+                                            {{ vm.errors.usuario[0] }}
+                                        </em>
+                                    </div>
+                                    <div class="form-group field-loginform-username">
+
+                                        <input ng-model="vm.user.password" id="password" type="password" name="password" class="form-control">
+                                        <em ng-if="vm.hasError('password')" class="help-block">
+                                            {{ vm.errors.password[0] }}
+                                        </em>
+                                    </div>
+                                <br>
+
+                                <footer>
+                                    <button ng-click="vm.login()" type="submit" class="btn btn-primary pull-right">
+                                        Ingresar
+                                    </button>
+                                </footer>
+                                <div class="new-account">
+                                    <h4>Considere lo siguiente:</h4>
+                                    <p>La contraseña debe contar con al menos 6 caracteres</p>
+                                    <p>Cualquier problema con su cuenta, favor contactarse con la DGE</p>
+                                    <p>Mail: soporte@dge.usach.cl</p>
+                                </div>
+                            </form>
+                </div>
+        </div>
+        <div class="col-md-4 main-login">
+            <div class="logo">
+                <img src="img/logo.png" style="width: 250px;" alt="USACH" class="img-responsive">
+    <!--            <img alt="USACH" class="img-responsive" src="/usash/web/images/logo.png" style="width: 250px">-->
+                <h1 class="mainTitle">Sistema de Gestión y Seguimiento de Planes Estratégicos</h1>
+                <span class="mainDescription">Departamento de Gestión Estratégica</span><br>
+                <small>Dirección de Desarrollo Institucional</small>
+                <div class="copyright">
+                   2016 © USACH desarrollado por Universidad de Santiago de Chile - Sistema DGE.
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</ui-view>

@@ -1,0 +1,45 @@
+<div class="panel panel-transparent">
+    <div class="panel-heading">
+        <h4> Reportar Avances en Iniciativa</h4>
+        <div class="panel-tools">
+            <div class="btn-group">
+                <a ui-sref="app.queryIniciativas" class="btn btn-default">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> Volver al Panel
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form>             
+            <table class='table mantainer' ng-if="!vm.isAdmin()">
+                <tr>
+                    <td class="tdLabel">Iniciativa</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="descripcion_corta" placeholder="Ingrese descripción corta ..." ng-model="vm.data.descripcion_corta" disabled></td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Estado Avance</td>
+                    <td width="20"  class="point">:</td>
+                    <td class="tdInfo">
+                        <ui-select ng-model="vm.data.estado_avance">
+                            <ui-select-match placeholder="Seleccione avance...">
+                               {{$select.selected.nombre}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="opcion.id as opcion in vm.opcionesAvance">
+                                <span ng-bind="opcion.nombre "></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">Avance</td>
+                    <td width="20" class="point">:</td>
+                    <td class="tdInfo"><input type="text" class="form-control" name="avance" placeholder="Ingrese descripción corta ..." ng-model="vm.data.avance"></td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" ng-click="vm.submitForm()">
+                {{vm.action}} Iniciativa
+            </button>
+        </form>
+    </div>
+</div>

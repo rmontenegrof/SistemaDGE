@@ -1,0 +1,120 @@
+<div class="panel panel-transparent">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa-fw fa fa-"></i>
+				Calendario
+			</h1>
+		</div>
+	</div>
+	<div class="panel-body">
+	    <div class="row">
+	        <div class="col-sm-2">
+	            <ui-select ng-model="vm.data.periodo" ng-change="vm.agnosFormat()">
+                    <ui-select-match placeholder="Seleccione periodo...">
+                       {{$select.selected.descripcion}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="opcion in vm.periodos">
+                        <span ng-bind="opcion.descripcion "></span>
+                    </ui-select-choices>
+                </ui-select>
+	        </div>
+	    </div>
+	</div>
+	<div class="panel-body">
+	    <div class="row">
+	        <div class="col-sm-6">
+	            <ui-select ng-model="vm.data.unidad">
+                    <ui-select-match placeholder="Seleccione unidad...">
+                       {{$select.selected.unidad}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="opcion in vm.unidades">
+                        <span ng-bind="opcion.unidad "></span>
+                    </ui-select-choices>
+                </ui-select>
+	        </div>
+    		<div class="col-sm-3">
+	            <a ng-click="vm.formatear()" class="boton">Mostrar Calendario</a>
+	        </div>
+	    </div>
+	</div>
+
+	<div ng-if="vm.showPanel">
+		<uib-accordion close-others="oneAtATime">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			  	<h3 class="panel-title">
+					Iniciativas
+				</h3>
+			  </div>
+			  <div class="panel-body">
+			  		<table class="table">
+						<thead>
+							<tr>
+								<th width="40%"></th>
+								<th ng-repeat="anho in vm.anhos track by $index" colspan="2">{{anho}}</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th ng-repeat="periodo in vm.per_f track by $index">S{{periodo}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="iniciativa in vm.iniciativas track by $index" ng-if="iniciativa">
+								<td width="40%">
+									<a ng-click="vm.modalVer(iniciativa,0)">
+										{{iniciativa.descripcion_corta}}
+									</a>
+								</td>
+								<td ng-repeat="periodo in vm.per_f track by $index" ng-if="vm.mostrarIniciativa(periodo, $index, iniciativa)>0" colspan="{{vm.span(periodo, $index, iniciativa)}}">
+									<div class="progress" ng-if="!(vm.barra(periodo, $index, iniciativa))">
+									    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{iniciativa.avance}}" aria-valuemin="0" aria-valuemax="100" style="width:{{iniciativa.avance}}%">
+									      {{iniciativa.avance}}% Completo
+									    </div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			  </div>
+			</div>
+
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			  	<h3 class="panel-title">
+					Hitos
+				</h3>
+			  </div>
+			  <div class="panel-body">
+			  		<table class="table">
+						<thead>
+							<tr>
+								<th width="40%"></th>
+								<th ng-repeat="anho in vm.anhos track by $index" colspan="2">{{anho}}</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th ng-repeat="periodo in vm.per_f track by $index">S{{periodo}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="hito in vm.hitos track by $index" ng-show="hito">
+								<td width="40%">
+									<a ng-click="vm.modalVer(hito,1)">
+										{{hito.nombre}}
+									</a>
+								</td>
+								<td ng-repeat="periodo in vm.per_f track by $index">
+									<div ng-if="!vm.mostrarHito(periodo, $index, hito)">
+									    <span><i class="fa fa-{{vm.iconoHito(hito)}}"></i></span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			  </div>
+			</div>
+	    </uib-accordion>
+	</div>
+
+</ui-view>

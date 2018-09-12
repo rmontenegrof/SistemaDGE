@@ -1,0 +1,75 @@
+<ui-view>
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa-fw fa fa-"></i>
+				Panel de Control
+			</h1>
+		</div>
+	</div>
+
+	<div class="jarviswidget jarviswidget-color-blueDark" id="profile-table">
+		<div class="container-fluid container-fullw bg-white">
+		    <div class="row">
+		        <div class="col-sm-7">
+		            <ui-select ng-model="vm.data">
+                        <ui-select-match placeholder="Seleccione unidad...">
+                           {{$select.selected.nombre}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="opcion.id as opcion in vm.unidades">
+                            <span ng-bind="opcion.nombre "></span>
+                        </ui-select-choices>
+                    </ui-select>
+		        </div>
+        		<div class="col-sm-3">
+		            <a ng-click="vm.setPanel()" class="boton">Mostrar panel</a>
+		        </div>
+		    </div>
+		</div>
+	</div>
+
+	<div ng-if="vm.showPanelPassword" class="jarviswidget jarviswidget-color-blueDark" id="password-setting">
+		<header>
+			<span class="widget-icon"> <i class="fa fa-lock"></i> </span>
+			<h2>Actualizar clave</h2>
+		</header>
+
+		<div class="widget-body">
+			<form class="form-horizontal" role="form" method="POST" novalidate>
+				<div class="form-group" ng-class="{'has-error': vm.hasError('password')}">
+					<label class="col-md-4 control-label">Nueva contraseña</label>
+
+					<div class="col-md-6">
+						<input type="password" class="form-control" ng-model="vm.data.password">
+
+						<span ng-if="vm.hasError('password')" class="help-block">
+							<strong>{{ vm.errors.password[0] }}</strong>
+						</span>
+					</div>
+				</div>
+
+				<div class="form-group" ng-class="{'has-error': vm.hasError('password_confirmation')}">
+					<label class="col-md-4 control-label">Confirmar nueva contraseña</label>
+
+					<div class="col-md-6">
+						<input type="password" class="form-control" ng-model="vm.data.password_confirmation">
+
+						<span ng-if="vm.hasError('password_confirmation')" class="help-block">
+							<strong>{{ vm.errors.password_confirmation[0] }}</strong>
+						</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-6 col-md-offset-4">
+						<button ng-click="vm.submitForm()" class="btn btn-primary">
+							<i ng-class="{'fa-lock': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }" class="fa fa-btn "></i> Cambiar contraseña
+						</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</ui-view>

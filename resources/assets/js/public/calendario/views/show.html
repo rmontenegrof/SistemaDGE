@@ -1,0 +1,100 @@
+<!--Inicio ArchivoModal-->
+<div class="modal-body">
+
+<div class='row'>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-bluegob" id="archivocarga-form">
+            <header>
+                <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                <h2>{{ vm.nombre }}</h2>
+            </header>
+
+            <div>
+                <div class="widget-body no-padding all-background">
+                    <br>
+                    <form class="form-horizontal" role="form" method="POST" novalidate>
+
+                        <table ng-if="!vm.mostrar" class='table mantainer'>
+                            <tbody>
+                                <tr>
+                                    <td width="10%">Iniciativa</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{vm.element.descripcion_corta}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Activa</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.activo)?"Si":"No"}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Avance</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.avance)}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Inicio</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.semestre_inicio==1)?"Primer":"Segundo"}} Semestre de {{vm.element.anho_inicio}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Término</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.semestre_fin==1)?"Primer":"Segundo"}} Semestre de {{vm.element.anho_fin}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Responsable</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.responsable)}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Presupuesto</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.presupuesto)}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Unidad de Apoyo</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{(vm.element.unidad.unidad_apoyo)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table ng-if="vm.mostrar" class='table mantainer'>
+                            <tbody>
+                                <tr>
+                                    <td width="10%">Hito</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{vm.element.nombre}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Responsable</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{vm.element.responsable}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Medios Verificacion</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{vm.element.medios_verificacion}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Observacion</td>
+                                    <td width="5%">:</td>
+                                    <td width="85%">{{vm.element.observacion}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button ng-class="{'disabled': vm.formIsSubmit }" type="button" class="btn btn-default" ng-click="vm.cancelar()">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!--Fin modal-->
