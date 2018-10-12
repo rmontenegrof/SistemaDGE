@@ -33,7 +33,8 @@ class User extends Authenticatable
         'tipo',
         'ultima_conn',
         'usuario',
-        'verification_code'
+        'verification_code',
+        'CCC'
     ];
 
     protected $hidden = [

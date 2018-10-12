@@ -92,7 +92,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return UserService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'users'
@@ -169,7 +169,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
         }
       }
     })
-    
+
     .state('app.profile', {
       url: '/profile',
       controller: require('./profile/ProfileController'),
@@ -179,6 +179,19 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
         title: 'Perfil'
       }
     })
+
+
+    .state('app.iframe', {
+      url: '/Indicadores',
+      controller: require('./iframe_indicadores/IframeController'),
+      controllerAs: 'vm',
+      template: require('./iframe_indicadores/form.html'),
+      data: {
+        title: 'Indicadores'
+      }
+    })
+
+
     .state('app.unidades', {
       url: '/unidades?page&unidad&estado',
       controller: require('./unidades/ListController'),
@@ -189,7 +202,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return UnidadService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Unidades'
@@ -205,7 +218,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return GrupoService.getAll().then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Crear'
@@ -256,7 +269,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return PeriodoService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Periodos'
@@ -312,7 +325,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return FocoService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'focos'
@@ -369,7 +382,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return ObjetivoService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Objetivos'
@@ -473,7 +486,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return EstrategiaService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Estrategias'
@@ -546,7 +559,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return IniciativaService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Iniciativas'
@@ -667,7 +680,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return ObjetivoService.panel_acciones($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Panel de Control'
@@ -688,12 +701,12 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return UnidadService.all().then(function(data) {
             return data.data;
           });
-        }, 
+        },
         focos: function(FocoService, $stateParams) {
           return FocoService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Consulta Iniciativas'
@@ -709,7 +722,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return UnidadService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Envío de comunicado'
@@ -725,7 +738,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return ActividadService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Actividades'
@@ -801,7 +814,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return UnidadApoyoService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
         title: 'Unidades de Apoyo'
@@ -843,10 +856,10 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return OrigenIniciativaService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
-        title: 'Unidades de Apoyo'
+        title: 'Origen Iniciativas'
       }
     })
     .state('app.origen.create', {
@@ -885,10 +898,10 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           return HitoService.filterResources($stateParams).then(function(data) {
             return data.data;
           });
-        } 
+        }
       },
       data: {
-        title: 'Unidades de Apoyo'
+        title: 'Hitos'
       }
     })
     .state('app.hitos.create', {
@@ -1276,6 +1289,9 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
             return data.data;
           });
         }
+      },
+      data: {
+        title: 'Calendario'
       }
     })
   $urlRouterProvider.otherwise('/login');
