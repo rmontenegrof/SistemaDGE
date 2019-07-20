@@ -28,7 +28,7 @@
     "laravel-elixir-browsersync-official": "^1.0.0",
     "laravel-elixir-rollup-official": "^1.0.5",
     "laravel-elixir-webpack-official": "^1.0.2",
-    "lodash": "^4.14.0",
+    "lodash": "^4.17.13",
     "ng-annotate-loader": "^0.1.1",
     "npm": "^4.0.2",
     "satellizer": "^0.15.5",
